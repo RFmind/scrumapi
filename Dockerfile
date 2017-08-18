@@ -1,7 +1,7 @@
 FROM elixir:latest
 
 # create and set homedir
-WORKDIR /opt/tasks
+WORKDIR /app
 
 # install hex silently
 RUN mix local.hex --force
@@ -10,16 +10,22 @@ RUN mix local.hex --force
 RUN mix local.rebar --force
 
 # copy all dependencies
-COPY mix.* /opt/tasks/
+COPY mix.* /app/
 
-# install depenencies from prod env
-RUN mix deps.get --only prod
+# install dependencies
+RUN mix deps.get
 
 # compile dependencies
 RUN mix deps.compile
 
 # copy all application files
-COPY . /opt/tasks
+COPY . /app/
 
 # compile application
 RUN mix compile
+
+# create database
+#RUN mix ecto.create
+
+# migrate database
+#RUN mix ecto.migrate

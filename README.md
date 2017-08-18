@@ -1,14 +1,24 @@
 # Scrumapi
 
-To start your Phoenix app:
+## Running the application locally:
 
+  * Set POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST environment variables
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Start Phoenix endpoint with `mix phoenix.server`
+  * Run tests with `mix test`
+  * Run the application with `mix phoenix.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+The application is now available at [`localhost:4000`](http://localhost:4000).
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+## Running the application with Docker:
+
+  * Install docker and docker-compose
+  * Create database with `sudo docker-compose run web mix ecto.create`
+  * Migrate database with `sudo docker-compose run web mix ecto.migrate`
+  * Run tests with `sudo docker-compose run test`
+  * Run application with `sudo docker-compose run web`
+
+The application is now available at [`localhost:4000`](http://localhost:4000).
 
 ## Learn more
 

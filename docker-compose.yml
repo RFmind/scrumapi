@@ -11,21 +11,15 @@ web:
     - "4000:4000"
   environment:
     - MIX_ENV=dev
-    - POSTGRES_USER=postgres
-    - POSTGRES_PASSWORD=postgres
-    - POSTGRES_HOST=db
     - PORT=4000
   volumes:
     - .:/app
   links:
     - db
 test:
-  image: phoenixdocker_web
+  build: .
   command: mix test
   environment:
-    - POSTGRES_USER=postgres
-    - POSTGRES_PASSWORD=postgres
-    - POSTGRES_HOST=db
     - MIX_ENV=test
   volumes_from:
     - web
