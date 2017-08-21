@@ -12,5 +12,8 @@ defmodule Scrumapi.Router do
     resources "/tasks", TaskController, except: [:new, :edit]
     resources "/projects", ProjectController, except: [:new, :edit]
     resources "/sprints", SprintController, except: [:new, :edit]
+
+    get "/projects/:project_id/tasks", TaskController, :tasks_by_project
+    get "/sprints/:sprint_id/tasks", TaskController, :tasks_by_sprint
   end
 end

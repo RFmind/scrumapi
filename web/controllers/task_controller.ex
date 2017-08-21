@@ -29,6 +29,26 @@ defmodule Scrumapi.TaskController do
     render(conn, "show.json", task: task)
   end
 
+  def tasks_by_project(conn, %{"project_id" => project_id}) do
+    tasks = Repo.all(
+      from t in Scrumapi.Task,
+      join: p in assoc(t, :project),
+      where: p.id == ^project_id,
+      select: t)
+
+    render(conn, "index.json", %{tasks: tasks})
+  end
+
+  def tasks_by_sprint(conn, %{"sprint_id" => sprint_id}) do
+    tasks = Repo.all(
+      from t in Scrumapi.Task,
+      join: s in assoc(t, :sprint),
+      where: s.id == ^sprint_id,
+      select: t)
+
+    render(conn, "index.json", %{tasks: tasks})
+  end
+
   def update(conn, %{"id" => id, "task" => task_params}) do
     task = Repo.get!(Task, id)
     changeset = Task.changeset(task, task_params)

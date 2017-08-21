@@ -7,7 +7,7 @@ defmodule Scrumapi.Task do
     field :priority, :integer
     belongs_to :project, Scrumapi.Project
     belongs_to :sprint, Scrumapi.Sprint
-
+    #belongs_to :user, Scrumapi.User
     timestamps()
   end
 

@@ -62,4 +62,33 @@ defmodule Scrumapi.TaskControllerTest do
     assert response(conn, 204)
     refute Repo.get(Task, task.id)
   end
+
+  test "renders tasks by given project_id", %{conn: conn} do
+    project = Repo.insert! %Scrumapi.Project{}
+    Repo.insert! %Task{
+      name: "Somename",
+      priority: 42,
+      status: "not done",
+      project_id: project.id}
+
+    conn = get conn, task_path(conn, :tasks_by_project, project.id)
+    resp = json_response(conn, 200)
+    refute resp["data"] == []
+    resp_task = List.first(resp["data"])
+    assert resp_task["project"] == project.id
+  end
+
+  test "renders tasks by given sprint_id", %{conn: conn} do
+    sprint = Repo.insert! %Scrumapi.Sprint{}
+    Repo.insert! %Task{
+      name: "Somename",
+      priority: 42,
+      status: "not done",
+      sprint_id: sprint.id}
+
+    conn = get conn, task_path(conn, :tasks_by_sprint, sprint.id)
+    resp = json_response(conn, 200)
+    refute resp["data"] == []
+    assert List.first(resp["data"])["sprint"] == sprint.id
+  end
 end
