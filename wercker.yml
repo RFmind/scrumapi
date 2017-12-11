@@ -23,6 +23,7 @@ build:
           export POSTGRES_PASSWORD=$POSTGRES_ENV_POSTGRES_PASSWORD
           export POSTGRES_HOST=$POSTGRES_PORT_5432_TCP_ADDR
           export POSTGRES_PORT=$POSTGRES_PORT_5432_TCP_PORT
+          export MIX_ENV=test
 
     - script:
         name: "install hex silently"
