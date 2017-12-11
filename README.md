@@ -1,4 +1,4 @@
-# Scrumapi
+# Scrumapi [![wercker status](https://app.wercker.com/status/05b8bd585249901be521f06e666d50f5/m/master "wercker status")](https://app.wercker.com/project/byKey/05b8bd585249901be521f06e666d50f5)
 
 ## Running the application locally:
 
