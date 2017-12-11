@@ -24,8 +24,3 @@ COPY . /app/
 # compile application
 RUN mix compile
 
-# create database
-#RUN mix ecto.create
-
-# migrate database
-#RUN mix ecto.migrate
