@@ -48,3 +48,13 @@ build:
     - script:
         name: "run tests"
         code: mix test
+
+deploy:
+  steps:
+    - internal/docker-push:
+        username: $USERNAME
+        password: $PASSWORD
+        tag: latest
+        repository: rfmind/scrumapi
+        registry: https://registry.hub.docker.com/v2
+
