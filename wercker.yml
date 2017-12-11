@@ -25,6 +25,14 @@ build:
           export POSTGRES_PORT=$POSTGRES_PORT_5432_TCP_PORT
 
     - script:
+        name: "install hex silently"
+        code: mix local.hex --force
+
+    - script:
+        name: "install rebar silently"
+        code: mix local.rebar --force
+
+    - script:
         name: "install dependencies"
         code: mix deps.get
 
