@@ -2,7 +2,7 @@
 
 ## Running the application locally:
 
-  * Set POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST environment variables
+  * Set `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_HOST` environment variables
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Run tests with `mix test`
