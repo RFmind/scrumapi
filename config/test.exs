@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :scrumapi, Scrumapi.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: System.get_env("DB_ENV_POSTGRES_USER"),
-  password: System.get_env("DB_ENV_POSTGRES_PASSWORD"),
+  username: System.get_env("POSTGRES_USER"),
+  password: System.get_env("POSTGRES_PASSWORD"),
   database: "scrumapi_test",
-  hostname: System.get_env("DB_ENV_POSTGRES_HOST"),
+  hostname: System.get_env("POSTGRES_HOST"),
   pool: Ecto.Adapters.SQL.Sandbox
